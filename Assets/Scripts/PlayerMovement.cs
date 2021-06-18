@@ -30,11 +30,24 @@ public class PlayerMovement : MonoBehaviour
         Move();
     }
 
+    private void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            direction = Input.mousePosition.x > Screen.width / 2 ? 1 : -1;
+        }
+        else
+        {
+            direction = 0;
+        }
+        
+    }
+
     private void Move()
     {
         if (isDead) return;
         
-        direction = Input.GetAxisRaw("Horizontal");
+        /*direction = Input.GetAxisRaw("Horizontal");*/
         lastDirection = direction != 0 ? direction : lastDirection;
 
         anim.SetFloat(Direction, lastDirection);
